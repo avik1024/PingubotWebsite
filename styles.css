@@ -1,6 +1,6 @@
 :root {
   color: #17202a;
-  background: #f7f7f4;
+  background: #101820;
   font-family: Arial, Helvetica, sans-serif;
   font-synthesis: none;
   line-height: 1.6;
@@ -400,7 +400,7 @@ button {
   .footer-callout h2 { padding-right: 170px; }
 }
 
-@media (max-width: 820px) {
+@media (max-width: 980px) {
   .home-page .global-header {
     top: 10px;
     grid-template-columns: 1fr auto;
@@ -864,9 +864,9 @@ button {
 @media (max-width: 980px) {
   .home-page .site-header { width: min(calc(100% - 40px), 1400px); }
   .home-page .site-nav { display: none; }
-  .home-page .hero { grid-template-columns: 1fr; padding-top: 150px; }
+  .home-page .hero { grid-template-columns: 1fr; width: 100%; max-width: 100%; padding-top: 150px; }
   .home-page .hero-copy { max-width: 850px; }
-  .home-page .hero-system { min-height: 520px; margin-top: -60px; opacity: .8; }
+  .home-page .hero-system { width: 100%; max-width: 100%; min-height: 520px; margin-top: -60px; opacity: .8; }
   .home-page .penguin-field { right: 2%; width: min(70vw, 560px); }
   .home-page .review-grid { grid-template-columns: repeat(2,1fr); }
   .home-page .review-grid > div:nth-child(2) { border-right: 0; }
@@ -879,7 +879,7 @@ button {
   .home-page .nav-cta::before { content: "Contact"; font-size: 12px; }
   .home-page section { padding: 92px 22px; }
   .home-page section:not(.hero)::before { left: 22px; width: calc(100% - 44px); }
-  .home-page .hero { min-height: 100svh; padding-top: 125px; }
+  .home-page .hero { min-height: 100svh; padding-top: 125px; overflow-x: hidden; }
   .home-page .hero h1 { font-size: clamp(54px,17vw,78px); }
   .home-page .hero-summary { max-width: 92%; }
   .home-page .hero-system { min-height: 410px; margin-top: -20px; }
@@ -1227,8 +1227,11 @@ button {
 .home-page .site-header.global-header {
   position: fixed;
   top: 0;
-  width: 100%;
+  right: 0;
+  left: 0;
+  width: auto;
   min-height: 72px;
+  margin: 0;
   padding: 0 max(32px, calc((100vw - 1400px) / 2 + 32px));
   border: 0;
   border-bottom: 1px solid rgba(245,247,247,.09);
@@ -1241,12 +1244,14 @@ button {
 .home-page .global-header .desktop-nav a[aria-current="page"] { display: block; }
 .home-page .site-footer.designed-footer { width: 100%; max-width: none; padding: 0; border: 0; }
 
-@media (max-width: 820px) {
+@media (max-width: 980px) {
   .home-page .site-header.global-header {
     top: 0;
     grid-template-columns: minmax(0, 1fr) max-content;
     align-items: center;
-    width: 100%;
+    right: 0;
+    left: 0;
+    width: auto;
     min-height: 64px;
     padding: 0 20px;
   }
