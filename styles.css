@@ -943,6 +943,51 @@ button {
 .inner-page .page-intro .discipline-field,
 .inner-page .page-intro .conversation-signal { grid-column: 1 / -1; }
 
+/* Editorial intro: statement first, supporting argument beneath it. */
+.build-page .build-hero,
+.pov-page .pov-hero,
+.about-page .about-hero {
+  grid-template-columns: 1fr;
+}
+
+.build-page .build-hero .intro-heading,
+.pov-page .pov-hero .intro-heading,
+.about-page .about-hero .intro-heading {
+  grid-column: 1;
+  max-width: 1120px;
+}
+
+.build-page .build-hero .intro-copy,
+.pov-page .pov-hero .intro-copy,
+.about-page .about-hero .intro-copy {
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 1.28fr);
+  grid-column: 1;
+  gap: clamp(44px, 7vw, 110px);
+  align-items: start;
+  max-width: 1120px;
+  margin-top: clamp(44px, 5vw, 68px);
+  padding-top: 0;
+}
+
+.build-page .build-hero .intro-copy .lead,
+.pov-page .pov-hero .intro-copy .lead,
+.about-page .about-hero .intro-copy .lead { margin: 0; }
+
+.inner-page .page-intro .intro-detail > p:not(.statement) {
+  margin-top: 0;
+  color: rgba(245,247,247,.8);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.7;
+}
+
+.inner-page .page-intro .intro-detail > p:not(:last-child) { margin-bottom: 24px; }
+.build-page .intro-detail .statement,
+.pov-page .intro-detail .statement {
+  margin-top: 38px;
+  font-size: clamp(24px, 2.2vw, 34px);
+}
+
 .inner-page .page-intro .eyebrow {
   margin: 0 0 22px;
   color: var(--ai-cyan);
@@ -1146,6 +1191,13 @@ button {
   .inner-page .page-intro .intro-copy { grid-column: 1; }
   .inner-page .page-intro .intro-copy { padding-top: 0; }
   .inner-page .page-intro .intro-heading h1 { margin-bottom: 30px; }
+  .build-page .build-hero .intro-copy,
+  .pov-page .pov-hero .intro-copy,
+  .about-page .about-hero .intro-copy {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 0;
+  }
   .stakeholder-page .stakeholder-hero { grid-template-columns: 1fr; }
   .stakeholder-page .stakeholder-hero .stakeholder-map { grid-column: 1; grid-row: auto; min-height: 460px; margin-top: 42px; }
   .stakeholder-map img { right: 2%; width: min(72%,520px); }
@@ -1201,13 +1253,21 @@ button {
   .home-page .global-header .desktop-nav { display: none; }
   .home-page .global-header .wordmark { grid-column: 1; justify-self: start; }
   .home-page .global-header .mobile-menu {
+    position: static;
+    display: block;
     grid-column: 2;
     grid-row: 1;
     justify-self: end;
-    width: max-content;
+    width: auto;
     margin-left: auto;
+    visibility: visible;
+    opacity: 1;
   }
-  .home-page .global-header .mobile-menu summary { justify-content: flex-end; }
+  .home-page .global-header .mobile-menu summary {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
 
 /* Warm signal balance: intent, decisions and human action */
