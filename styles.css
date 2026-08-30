@@ -1519,3 +1519,107 @@ button {
   .about-page .approach-section ul { grid-template-columns: 1fr; }
   .contact-page .contact-form-section { padding-right: 22px; padding-left: 22px; }
 }
+
+/* Responsive hardening: keep page chrome and content inside the viewport. */
+html,
+body.home-page {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  html,
+  body.home-page { overflow-x: clip; }
+}
+
+.home-page main,
+.home-page main > section { max-width: 100%; }
+.home-page img { max-width: 100%; }
+
+@media (max-width: 980px) {
+  .home-page .site-header.global-header {
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0 20px;
+  }
+
+  .home-page .global-header .wordmark {
+    flex: 0 0 auto;
+    margin-right: auto;
+  }
+
+  .home-page .global-header .desktop-nav,
+  .home-page .global-header > .nav-cta { display: none; }
+
+  .home-page .global-header .mobile-menu {
+    position: static;
+    display: block;
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0 0 0 auto;
+  }
+
+  .home-page .global-header .mobile-menu summary {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 72px;
+  }
+
+  .home-page .global-header .mobile-menu nav {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    width: auto;
+    max-height: calc(100dvh - 64px);
+    margin: 0;
+    overflow-y: auto;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .inner-page .page-intro,
+  .build-page .build-hero,
+  .pov-page .pov-hero,
+  .about-page .about-hero,
+  .contact-page .contact-hero {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .inner-page .page-intro .intro-heading,
+  .inner-page .page-intro .intro-copy,
+  .inner-page .page-intro .intro-detail {
+    grid-column: 1;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .build-page .build-hero .intro-copy,
+  .pov-page .pov-hero .intro-copy,
+  .about-page .about-hero .intro-copy,
+  .contact-page .contact-hero .intro-copy {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-page .contact-form-section { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 680px) {
+  .inner-page .page-intro h1 {
+    max-width: 100%;
+    font-size: clamp(42px, 12vw, 58px);
+    overflow-wrap: break-word;
+  }
+}
